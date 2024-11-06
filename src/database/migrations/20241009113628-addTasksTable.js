@@ -22,12 +22,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
-/*
       category: {
-          type: DataTypes.STRING,
+          type: Sequelize.STRING,
           allowNull: true,
       },
-*/
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
