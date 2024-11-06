@@ -2,12 +2,12 @@ const { Task } = require('../models');
 
 const createTask = async (req, res) => {
     try {
-        const { description, status, assignedTo, category } = req.body;
+        const { title, description, status, assignedTo, category } = req.body;
         //const { description, status, assignedTo } = req.body;
         console.log("-=-=-=->>>>> createTask")
         console.log("-> ", req.body)
 
-        const task = await Task.create({ description, status, assignedTo, category });
+        const task = await Task.create({ title, description, status, assignedTo, category });
         //const task = await Task.create({ description, status, assignedTo });
         
         console.log("-=->>> RETORNO")
@@ -54,7 +54,7 @@ const getTaskById = async (req, res) => {
 
 const updateTask = async (req, res) => {
     try {
-        const { description, status, assignedTo, category } = req.body;
+        const { title, description, status, assignedTo, category } = req.body;
         //const { description, status, assignedTo } = req.body;
 
         const task = await Task.findByPk(req.params.id);
@@ -63,7 +63,7 @@ const updateTask = async (req, res) => {
         console.log(":::-> ", task)
 
         if (task) {
-            await task.update({ description, status, assignedTo, category });
+            await task.update({ title, description, status, assignedTo, category });
             //await task.update({ description, status, assignedTo });
 
             await task.reload();
