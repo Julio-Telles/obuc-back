@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false
       },
       status: {
-        type: Sequelize.ENUM('pending', 'inProgress', 'completed'),
+        type: Sequelize.ENUM('pending', 'inProgress', 'completed', 'obsolete'),
         allowNull: false,
         defaultValue: 'pending'
       },
@@ -22,6 +22,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true
       },
+/*
+      category: {
+          type: DataTypes.STRING,
+          allowNull: true,
+      },
+*/
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

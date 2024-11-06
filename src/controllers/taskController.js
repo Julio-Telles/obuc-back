@@ -2,9 +2,16 @@ const { Task } = require('../models');
 
 const createTask = async (req, res) => {
     try {
+        //const { description, status, assignedTo, category } = req.body;
         const { description, status, assignedTo } = req.body;
+        console.log("-=-=-=->>>>> createTask")
+        console.log("-> ", req.body)
 
+        //const task = await Task.create({ description, status, assignedTo, category });
         const task = await Task.create({ description, status, assignedTo });
+        
+        console.log("-=->>> RETORNO")
+        console.log(":::-> ", task)
 
         return res.status(201).json(task);
     } catch (error) {
@@ -14,7 +21,13 @@ const createTask = async (req, res) => {
 
 const getAllTasks = async (req, res) => {
     try {
+        console.log("-=-=-=->>>>> getAllTasks")
+        console.log("-> ", req.body)
+
         const tasks = await Task.findAll();
+
+        console.log("-=->>> RETORNO")
+        console.log(":::-> ", tasks)
 
         return res.status(200).json(tasks);
     } catch (error) {
@@ -25,6 +38,9 @@ const getAllTasks = async (req, res) => {
 const getTaskById = async (req, res) => {
     try {
         const task = await Task.findByPk(req.params.id);
+        
+        console.log("-=->>> RETORNO")
+        console.log(":::-> ", task)
 
         if (task) {
             return res.status(200).json(task);
@@ -38,11 +54,16 @@ const getTaskById = async (req, res) => {
 
 const updateTask = async (req, res) => {
     try {
+        //const { description, status, assignedTo, category } = req.body;
         const { description, status, assignedTo } = req.body;
 
         const task = await Task.findByPk(req.params.id);
+        
+        console.log("-=->>> RETORNO")
+        console.log(":::-> ", task)
 
         if (task) {
+            //await task.update({ description, status, assignedTo, category });
             await task.update({ description, status, assignedTo });
 
             await task.reload();
@@ -59,6 +80,9 @@ const updateTask = async (req, res) => {
 const deleteTask = async (req, res) => {
     try {
         const task = await Task.findByPk(req.params.id);
+        
+        console.log("-=->>> RETORNO")
+        console.log(":::-> ", task)
 
         if (task) {
             await task.destroy();

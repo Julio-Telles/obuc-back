@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
             },
             status: {
-                type: DataTypes.ENUM('pending', 'inProgress', 'completed'),
+                type: DataTypes.ENUM('pending', 'inProgress', 'completed', 'obsolete'),
                 allowNull: false,
                 defaultValue: 'pending',
             },
@@ -21,6 +21,12 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
+/*
+            category: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+*/
             createdAt: {
                 type: DataTypes.DATE,
                 allowNull: false,
